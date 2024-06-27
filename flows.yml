@@ -1,0 +1,23 @@
+flows:
+  transfer_money:
+    description: This flow lets users send money to friends and family.
+    steps:
+      - collect: recipient
+      - collect: amount
+        description: the number of US dollars to send
+      - action: utter_transfer_complete
+
+  pause_a_card:
+    description: This flow lets users to pause or disable there cards.
+    steps:
+      - collect: duration
+        description: the number of days for which to disable
+      - collect: final_confirmation
+        next:
+        - if: not slots.final_confirmation
+          then:
+            - action: utter_card_pause_cancelled
+              next: END
+        - else: card_pause_successful
+      - action: utter_card_pause_complete
+        id: card_pause_successful

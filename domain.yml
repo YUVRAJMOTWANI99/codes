@@ -1,0 +1,34 @@
+version: "3.1"
+
+slots:
+  recipient:
+    type: text
+  amount:
+    type: float
+  duration:
+    type: text
+  final_confirmation:
+    type: bool
+
+responses:
+  utter_ask_recipient:
+    - text: "Who would you like to send money to?"
+
+  utter_ask_amount:
+    - text: "How much money would you like to send?"
+
+  utter_transfer_complete:
+    - text: "All done. {amount} has been sent to {recipient}."
+
+  utter_ask_duration:
+    - text: "Please tell the duration you would like to disable ypur card in days"
+
+  utter_card_pause_cancelled:
+    - text: "Card Disable Cancelled"
+  
+  utter_card_pause_complete:
+    - text: "Card Disabled for {duration} days."
+
+  utter_ask_final_confirmation:
+    - text: "Please confirm you want to disable card for {duration days}."
+  
